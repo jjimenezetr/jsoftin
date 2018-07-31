@@ -20,8 +20,7 @@ class RolesController extends Controller
     }
 
     public function index(){
-      //return 'Registro de usuario';
-       //$roles=Rol::all();
+
        //return view ('notes/list',compact('roles'));
     }
     public function listar_rol(){
@@ -29,8 +28,7 @@ class RolesController extends Controller
     	$roles=Role::all(); 
 
         //dd($roles);
-        //return $roles; 
-    	//return view (view:'listar_rol',compact(varname:'roles'));
+
     	return view ('Rol/listar_rol',compact('roles'));
     }
     protected function form_rol (){
@@ -51,6 +49,27 @@ class RolesController extends Controller
         $roles = Role::find($id);
 
         return view ('Rol/editar_rol',compact('roles'));
+    }
+    protected function actualizar_rol (Request $request, $id){
+
+        $roles = Role::find($id);
+        $roles->rol=$request->rol;
+        $roles->save();
+
+        $roles=Role::all(); 
+
+        return view ('Rol/listar_rol',compact('roles'));
+
+    }
+    protected function eliminar_rol ($id){
+        
+        //dd($id);
+        $roles = Role::find($id);
+        $roles->delete();
+        
+        $roles=Role::all(); 
+
+        return view ('Rol/listar_rol',compact('roles'));
     }
 
 }

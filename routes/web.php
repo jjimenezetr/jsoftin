@@ -27,6 +27,9 @@ Route::post('nuevo_rol', 'Rol\RolesController@nuevo_rol')->name('nuevo_rol');
 
 Route::get('editar_rol/{id}', 'Rol\RolesController@editar_rol')->name('editar_rol');
 
+Route::post('actualizar_rol/{id}', 'Rol\RolesController@actualizar_rol')->name('actualizar_rol');
+Route::get('eliminar_rol/{id}', 'Rol\RolesController@eliminar_rol')->name('eliminar_rol');
+
 
 //Route::post('nuevo_rol', array('data'=>'Rol\RolesController@nuevo_rol'))->name('nuevo_rol');
 

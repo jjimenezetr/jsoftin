@@ -8,7 +8,7 @@
                 <div class="card-header">Nuevo rol</div>
                 <div class="container">  
                     <br> 
-                    <form method="POST" action="{{ route('editar_rol',$roles->id) }}">
+                    <form method="POST" action="{{ route('actualizar_rol',$roles->id) }}">
                         {{ csrf_field() }} 
                         <div class="form-group">
                             <label for="rol">Nombre rol</label>

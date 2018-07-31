@@ -30,7 +30,9 @@
                             <td>{{$rol->rol}}</td>
                             <td>{{$rol->created_at}}</td>
                             <td> <a class="btn btn-primary" href="{{ route('editar_rol',$rol->id) }}">Editar</a> </td>
-                            <td><button type="button" name="{{$rol->id}}" id="{{$rol->id}}" class="btn btn-danger">Eliminar</button></td>
+                            <td>
+                               <!-- <a class="btn btn-danger" href="{{ route('eliminar_rol',$rol->id) }}">Eliminar</a> -->
+                            <button class="btn btn-danger" value="Eliminarr" onclick="eliminar()"> Eliminar</button>  </td>
                           </tr>
                         @endforeach
                         </tbody>
@@ -40,6 +42,42 @@
         </div>
     </div>
 </div>
+
+
+    <link href="{{ asset('alertas/css/sweetalert.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('alertas/css/main.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('alertas/js/sweetalert.min.js') }}" defer></script>
+    <script src="{{ asset('alertas/js/functions.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function eliminar(){
+            jQuery(document).ready(function(){
+                swal({   
+                    title: "¿Seguro que deseas eliminar?",   
+                    text: "No podrás deshacer este paso",   
+                    type: "warning",   
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",   
+                    confirmButtonColor: "#DD6B55",   
+                    confirmButtonText: "Aceptar",   
+                    closeOnConfirm: false }, 
+
+                    function(){   
+
+                        swal({   
+                            title: "Eliminado correctamente",   
+                            text: "Se cerrará en 3 segundos.",   
+                            timer: 700,   
+                            showConfirmButton: false 
+                        });
+                });
+            });  
+        }
+    </script>
+
 @endsection
 
 
