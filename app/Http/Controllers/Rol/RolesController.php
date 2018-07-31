@@ -45,5 +45,12 @@ class RolesController extends Controller
 
         return view ('Rol/form_rol');
     }
+    protected function editar_rol ($id){
+        
+        //dd($id);
+        $roles = Role::find($id);
+
+        return view ('Rol/editar_rol',compact('roles'));
+    }
 
 }

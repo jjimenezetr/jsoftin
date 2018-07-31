@@ -29,7 +29,7 @@
                             <td>{{$cont}}</td>
                             <td>{{$rol->rol}}</td>
                             <td>{{$rol->created_at}}</td>
-                            <td><button type="button" name="{{$rol->id}}" id="{{$rol->id}}" class="btn btn-primary">Editar</button></td>
+                            <td> <a class="btn btn-primary" href="{{ route('editar_rol',$rol->id) }}">Editar</a> </td>
                             <td><button type="button" name="{{$rol->id}}" id="{{$rol->id}}" class="btn btn-danger">Eliminar</button></td>
                           </tr>
                         @endforeach

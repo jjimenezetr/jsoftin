@@ -8,12 +8,11 @@
                 <div class="card-header">Nuevo rol</div>
                 <div class="container">  
                     <br> 
-                    <form method="POST" action="{{ route('nuevo_rol') }}">
+                    <form method="POST" action="{{ route('editar_rol',$roles->id) }}">
                         {{ csrf_field() }} 
                         <div class="form-group">
                             <label for="rol">Nombre rol</label>
-                            <input id="rol" type="text" class="form-control{{ $errors->has('rol') ? ' is-invalid' : '' }}" name="rol" value="{{ old('$roles->rol') }}" required autofocus>
-
+                            <input id="rol" type="text" class="form-control{{ $errors->has('rol') ? ' is-invalid' : '' }}" name="rol" value="{{$roles->rol}}" required autofocus>
                             @if ($errors->has('rol'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('rol') }}</strong>
