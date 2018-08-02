@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -63,6 +69,42 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    public function lista_usuario(){
+
+        $usuarios = DB::table('users')->join('roles', 'users.id_rol', '=', 'roles.id')->paginate(5);
+        //$usuarios = DB::table('users')->get();
+        /*$usuarios = DB::table('users')->join('rol', 
+                function($join) {
+                    $join->on('users.id_rol', '=', 'rol.id')->where('rol.id', '!=', 0);
+                })->get();*/
+
+        //$usuarios=User::all(); 
+
+        return view ('auth/lista_usuario',compact('usuarios'));
+    }
+    protected function form_usuario (){
+
+        return view ('auth/form_usuario');
+    }
+
+    protected function nuevo_usuario (Request $request){
+
+        /*$usuario=new User();
+        $usuario->usuario=$request->usuario;
+        $usuario->password=Hash::make($data['contrasena']);
+        $usuario->email=$request->email;
+        $usuario->id_rol=2;
+        $usuario->save();*/
+        $usuario=new User();
+        $usuario->usuario='juanes';
+        $usuario->password=Hash::make('123456789');
+        $usuario->email='propioooo@gmail.com';
+        $usuario->id_rol=2;
+        $usuario->save();
+
+        return view ('auth/form_usuario');
+    }
+
     protected function create(array $data)
     {
         return User::create([
