@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Model\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -84,29 +85,29 @@ class RegisterController extends Controller
     }
     protected function form_usuario (){
 
-        return view ('auth/form_usuario');
+        //$roles=Role::all(); 
+        $roles = DB::table('roles')->get();
+
+        return view ('auth/form_usuario',compact('roles'));
     }
 
     protected function nuevo_usuario (Request $request){
-
-        /*$usuario=new User();
-        $usuario->usuario=$request->usuario;
-        $usuario->password=Hash::make($data['contrasena']);
-        $usuario->email=$request->email;
-        $usuario->id_rol=2;
-        $usuario->save();*/
+        //dd($request->id_rol);
         $usuario=new User();
-        $usuario->usuario='juanes';
-        $usuario->password=Hash::make('123456789');
-        $usuario->email='propioooo@gmail.com';
-        $usuario->id_rol=2;
+        $usuario->usuario=$request->usuario;
+        $usuario->password=Hash::make($request->contrasena);
+        $usuario->email=$request->email;
+        $usuario->id_rol=$request->id_rol;
+
         $usuario->save();
 
-        return view ('auth/form_usuario');
+        $roles = DB::table('roles')->get();
+        return view ('auth/form_usuario',compact('roles'));
     }
 
     protected function create(array $data)
     {
+
         return User::create([
             'usuario' => $data['usuario'],
             'email' => $data['email'],

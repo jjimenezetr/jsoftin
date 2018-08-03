@@ -31,6 +31,6 @@ Route::get('eliminar_rol/{id}', 'Rol\RolesController@eliminar_rol')->name('elimi
 //Usuario
 Route::get('lista_usuario', 'Auth\RegisterController@lista_usuario')->name('lista_usuario');
 Route::get('form_usuario', 'Auth\RegisterController@form_usuario')->name('form_usuario');
-Route::put('nuevo_usuario', 'Auth\RegisterController@nuevo_usuario')->name('nuevo_usuario');
-
+Route::post('nuevo_usuario', 'Auth\RegisterController@nuevo_usuario')->name('nuevo_usuario');
+//Route::post('nuevo_usuario', 'Rol\RolesController@nuevo_usuario')->name('nuevo_usuario');
 

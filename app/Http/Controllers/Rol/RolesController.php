@@ -71,5 +71,16 @@ class RolesController extends Controller
 
         return view ('Rol/listar_rol',compact('roles'));
     }
+    /*protected function nuevo_usuario (Request $request){
+
+        $usuario=new User();
+        $usuario->usuario=$request->usuario;
+        $usuario->password=Hash::make($request->contrasena);
+        $usuario->email=$request->email;
+        $usuario->id_rol=2;
+        $usuario->save();
+
+        return view ('auth/form_usuario');
+    }*/
 
 }

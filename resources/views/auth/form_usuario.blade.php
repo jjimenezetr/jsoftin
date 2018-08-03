@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contrasena">Contrasena</label>
-                            <input id="contrasena" type="text" class="form-control{{ $errors->has('contrasena') ? ' is-invalid' : '' }}" name="contrasena" value="" required autofocus>
+                            <input id="contrasena" type="password" class="form-control{{ $errors->has('contrasena') ? ' is-invalid' : '' }}" name="contrasena" value="" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo</label>
@@ -24,7 +24,11 @@
                         </div>
                         <div class="form-group">
                             <label for="rol">Rol</label>
-                            <input id="rol" type="text" class="form-control{{ $errors->has('rol') ? ' is-invalid' : '' }}" name="rol" value="" required autofocus>
+                            <select class="form-control selectpicker"  name ="id_rol" id="id_rol">
+                                @foreach ($roles as $rol)   
+                                    <option value="{{$rol->id}}">{{$rol->rol}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Registrar</button>
                         <a href="{{ route('lista_usuario') }}" class="btn btn-danger">Volver</a>
