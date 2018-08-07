@@ -29,7 +29,29 @@
         </div>
     </div>
 </div>
-@endsection
 
+
+
+    <link href="{{ asset('alertas/css/sweetalert.css') }}" rel="stylesheet">   
+    <script src="{{ asset('alertas/js/sweetalert.min.js') }}" defer></script>
+    <script src="{{ asset('alertas/js/functions.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        if('{{$error}}' == 'registrado'){
+            jQuery(document).ready(function(){
+                swal("Registrado", "Nuevo rol registrado correctamente", "success");
+            });
+        }else{
+            if('{{$error}}' == 'duplicado'){
+                jQuery(document).ready(function(){
+                    swal("Error!!", "El rol ingresado ya esta registrado", "error");  
+                });
+            }
+        }
+    </script>
+@endsection
 
 

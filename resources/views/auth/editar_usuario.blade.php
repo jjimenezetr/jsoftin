@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Nuevo usuario</div>
+                <div class="card-header">Editar usuario</div>
                 <div class="container">  
                     <br> 
-                    <form method="POST" action="{{ route('nuevo_usuario') }}">
+                    <form method="POST" action="{{ route('actualizar_usuario',encrypt($id)) }}">
                         {{ csrf_field() }} 
                         <div class="form-group">
                             <label for="usuario">Usuario</label>
@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contrasena">Contrasena</label>
-                            <input id="contrasena" type="password" class="form-control{{ $errors->has('contrasena') ? ' is-invalid' : '' }}" name="contrasena" value="{{ old('contrasena',$contrasena)}}" required autofocus>
+                            <input id="contrasena" type="password"  disabled=”disabled”  class="form-control{{ $errors->has('contrasena') ? ' is-invalid' : '' }}" name="contrasena" value="{{ old('contrasena',$contrasena)}}" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo</label>
@@ -55,7 +55,7 @@
 
         if('{{$error}}' == 'registrado'){
             jQuery(document).ready(function(){
-                swal("Registrado", "El usuario ha sido registrado correctamente", "success");
+                swal("Editado", "El usuario ha sido cambiado correctamente", "success");
             });
         }else{
             if('{{$error}}' != ''){

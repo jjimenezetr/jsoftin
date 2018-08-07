@@ -8,7 +8,7 @@
                 <div class="card-header">Nuevo rol</div>
                 <div class="container">  
                     <br> 
-                    <form method="POST" action="{{ route('actualizar_rol',$roles->id) }}">
+                    <form method="POST" action="{{ route('actualizar_rol',encrypt($roles->id)) }}">
                         {{ csrf_field() }} 
                         <div class="form-group">
                             <label for="rol">Nombre rol</label>
@@ -28,6 +28,28 @@
         </div>
     </div>
 </div>
+
+
+    <link href="{{ asset('alertas/css/sweetalert.css') }}" rel="stylesheet">   
+    <script src="{{ asset('alertas/js/sweetalert.min.js') }}" defer></script>
+    <script src="{{ asset('alertas/js/functions.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        if('{{$error}}' == 'registrado'){
+            jQuery(document).ready(function(){
+                swal("Editado", "El rol ha sido cambiado correctamente", "success");
+            });
+        }else{
+            if('{{$error}}' == 'duplicado'){
+                jQuery(document).ready(function(){
+                    swal("Error!!", "El rol ingresado ya esta registrado", "error");  
+                });
+            }
+        }
+    </script>
 @endsection
 
 
