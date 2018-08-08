@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Rol;
 
+use Laravel\Passport\HasApiTokens; //AGREGADO
 use App\Model\Role;
 //use App\resources\view\listar.rol;
 
@@ -117,8 +118,8 @@ class RolesController extends Controller
     }
     public function getRol(){
         $roles=Role::all();
-        return $roles;
-        //return response()->json($roles);
+        //return $roles;
+        return response()->json($roles);
     }
 
     /*protected function nuevo_usuario (Request $request){
